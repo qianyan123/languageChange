@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>languageList</title>
+	<script type="text/javascript" src="./jquery-1.7.2.min.js"></script>
+	<meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c"></meta>
+	<style type="text/css">
+	.container{
+		float: left;
+	}
+	a{
+			text-decoration: none;
+		}
+		li{
+			list-style: none;
+		}
+		.language_slider{
+			display: none;
+			width: 50px;
+			z-index: 10;
+			padding: 0px 12px;
+			background: #d11128;
+		}
+		.language_slider .list{
+			color: white;
+			font-size: 12px;
+			height: 25px;
+			overflow: hidden;
+			text-align: center;
+			white-space:nowrap;
+		}
+		.language_slider a{
+			color: white;
+		}
+		.language_slider a:hover{
+			text-decoration:underline;
+			text-decoration-color: white;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<li id='showLanguage'>
+			<a href="#" >English</a>
+		</li>
+
+		<ul class="language_slider">
+			
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+
+		var language_slider=$('.language_slider');
+		var languages=
+						[
+						{name:'German',location:'https://translate.google.com/translate?sl=en&tl=de&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Russian',location:'https://translate.google.com/translate?sl=en&tl=ru&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'French',location:'https://translate.google.com/translate?sl=en&tl=fr&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Spanish',location:'https://translate.google.com/translate?sl=en&tl=es&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Portuguese',location:'https://translate.google.com/translate?sl=en&tl=pt&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Italian',location:'https://translate.google.com/translate?sl=en&tl=it&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Japanses',location:'https://translate.google.com/translate?sl=en&tl=ja&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Chinese',location:'https://translate.google.com/translate?sl=en&tl=zh-tw&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Albanlan',location:'https://translate.google.com/translate?sl=en&tl=sq&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Arabic',location:'https://translate.google.com/translate?sl=en&tl=ar&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Azerbaijani',location:'https://translate.google.com/translate?sl=en&tl=az&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Irish',location:'https://translate.google.com/translate?sl=en&tl=ga&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Estonian',location:'https://translate.google.com/translate?sl=en&tl=et&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Basque',location:'https://translate.google.com/translate?sl=en&tl=eu&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Belarusian',location:'https://translate.google.com/translate?sl=en&tl=be&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Bulgarian',location:'https://translate.google.com/translate?sl=en&tl=bg&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Icelandic',location:'https://translate.google.com/translate?sl=en&tl=is&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Polish',location:'https://translate.google.com/translate?sl=en&tl=pl&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Bosnian',location:'https://translate.google.com/translate?sl=en&tl=bs&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Persian',location:'https://translate.google.com/translate?sl=en&tl=fa&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Afrikaans',location:'https://translate.google.com/translate?sl=en&tl=af&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Danish',location:'https://translate.google.com/translate?sl=en&tl=da&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Filipino',location:'https://translate.google.com/translate?sl=en&tl=tl&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Finnish',location:'https://translate.google.com/translate?sl=en&tl=fi&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Khmer',location:'https://translate.google.com/translate?sl=en&tl=km&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Georgian',location:'https://translate.google.com/translate?sl=en&tl=ka&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Gujarati',location:'https://translate.google.com/translate?sl=en&tl=gu&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Kazakh',location:'https://translate.google.com/translate?sl=en&tl=kk&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Haitian Creole',location:'https://translate.google.com/translate?sl=en&tl=ht&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Korean',location:'https://translate.google.com/translate?sl=en&tl=ko&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Hausa',location:'https://translate.google.com/translate?sl=en&tl=ha&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Dutch',location:'https://translate.google.com/translate?sl=en&tl=nl&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Galician',location:'https://translate.google.com/translate?sl=en&tl=gl&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Catalan',location:'https://translate.google.com/translate?sl=en&tl=ca&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Czech',location:'https://translate.google.com/translate?sl=en&tl=cs&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Kannada',location:'https://translate.google.com/translate?sl=en&tl=kn&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Croatian',location:'https://translate.google.com/translate?sl=en&tl=hr&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Latin',location:'https://translate.google.com/translate?sl=en&tl=la&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Latvian',location:'https://translate.google.com/translate?sl=en&tl=lv&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Lao',location:'https://translate.google.com/translate?sl=en&tl=lo&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Lithuanian',location:'https://translate.google.com/translate?sl=en&tl=lt&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Romanian',location:'https://translate.google.com/translate?sl=en&tl=ro&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Malagasy',location:'https://translate.google.com/translate?sl=en&tl=mg&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Maltese',location:'https://translate.google.com/translate?sl=en&tl=mt&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Marathi',location:'https://translate.google.com/translate?sl=en&tl=mr&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Malayalam',location:'https://translate.google.com/translate?sl=en&tl=ml&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Malay',location:'https://translate.google.com/translate?sl=en&tl=ms&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Macedonian',location:'https://translate.google.com/translate?sl=en&tl=mk&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Maori',location:'https://translate.google.com/translate?sl=en&tl=mi&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Mongolian',location:'https://translate.google.com/translate?sl=en&tl=mn&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Bengali',location:'https://translate.google.com/translate?sl=en&tl=bn&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Myanmar (Burmese)',location:'https://translate.google.com/translate?sl=en&tl=my&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Hmong',location:'https://translate.google.com/translate?sl=en&tl=hmn&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Zulu',location:'https://translate.google.com/translate?sl=en&tl=zu&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Nepali',location:'https://translate.google.com/translate?sl=en&tl=ne&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Norwegian',location:'https://translate.google.com/translate?sl=en&tl=no&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Punjabi',location:'https://translate.google.com/translate?sl=en&tl=pa&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Chichewa',location:'https://translate.google.com/translate?sl=en&tl=ny&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Swedish',location:'https://translate.google.com/translate?sl=en&tl=sv&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Serbian',location:'https://translate.google.com/translate?sl=en&tl=sr&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Sesotho',location:'https://translate.google.com/translate?sl=en&tl=st&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Sinhala',location:'https://translate.google.com/translate?sl=en&tl=si&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Esperanto',location:'https://translate.google.com/translate?sl=en&tl=eo&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Slovak',location:'https://translate.google.com/translate?sl=en&tl=sk&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Slovenian',location:'https://translate.google.com/translate?sl=en&tl=sl&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Swahili',location:'https://translate.google.com/translate?sl=en&tl=sw&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Cebuano',location:'https://translate.google.com/translate?sl=en&tl=ceb&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Somali',location:'https://translate.google.com/translate?sl=en&tl=so&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Tajik',location:'https://translate.google.com/translate?sl=en&tl=tg&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Telugu',location:'https://translate.google.com/translate?sl=en&tl=te&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Tamil',location:'https://translate.google.com/translate?sl=en&tl=ta&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Thai',location:'https://translate.google.com/translate?sl=en&tl=th&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Turkish',location:'https://translate.google.com/translate?sl=en&tl=tr&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Welsh',location:'https://translate.google.com/translate?sl=en&tl=cy&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Urdu',location:'https://translate.google.com/translate?sl=en&tl=ur&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Ukrainian',location:'https://translate.google.com/translate?sl=en&tl=uk&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Uzbek',location:'https://translate.google.com/translate?sl=en&tl=uz&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Hebrew',location:'https://translate.google.com/translate?sl=en&tl=iw&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Greek',location:'https://translate.google.com/translate?sl=en&tl=el&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Hungarian',location:'https://translate.google.com/translate?sl=en&tl=hu&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Armenian',location:'https://translate.google.com/translate?sl=en&tl=hy&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Igbo',location:'https://translate.google.com/translate?sl=en&tl=ig&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Yiddish',location:'https://translate.google.com/translate?sl=en&tl=yi&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Hindi',location:'https://translate.google.com/translate?sl=en&tl=hi&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Sundanese',location:'https://translate.google.com/translate?sl=en&tl=su&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Indonesian',location:'https://translate.google.com/translate?sl=en&tl=id&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Javanese',location:'https://translate.google.com/translate?sl=en&tl=jw&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Yoruba',location:'https://translate.google.com/translate?sl=en&tl=yo&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+						{name:'Vietnamese',location:'https://translate.google.com/translate?sl=en&tl=vi&u=http%3A%2F%2Ffgardening.waimaotong.com%2F'},
+					];
+
+
+		languages.reverse();
+
+	//	var showlanguage = localStorage.getItem("name");
+
+
+	//	$('#showLanguage a').text(showlanguage);
+
+		var templateString='';
+	//	for(var i=0;i<languages.length;i++){
+	//		if($('#showLanguage a').text()===languages[i].name){languages.splice(i,1)}
+	//	}
+
+		for(var i=0;i<languages.length;i++){
+			templateString='<li class="list"> <a href='+languages[i].location+ ' target="_blank" title='+languages[i].name+'>'+languages[i].name+'</a> </li>'+templateString;
+		}
+
+		var template=templateString;
+	
+		$('.language_slider').html(template);
+
+	
+		$('#showLanguage').mouseover(function(){
+			$('.language_slider').css('display','block');
+
+		//	$('.language_slider a').click(function(){
+		//		localStorage.setItem('name',$(this).attr('title'));
+		//		console.log(localStorage);
+		//		console.log('name',$(this).attr('title'));
+		//	})
+			$('.container').mouseleave(function(){
+				$('.language_slider').css('display','none');
+			})
+		})
+			
+
+	</script>
+</body>
+</html>
